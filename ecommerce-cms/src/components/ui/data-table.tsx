@@ -1,5 +1,3 @@
-"use client"
-
 import {
   type ColumnDef,
   flexRender,
@@ -69,7 +67,7 @@ export function DataTable<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                Nenhum resultado encontrado.
+                No results.
               </TableCell>
             </TableRow>
           )}

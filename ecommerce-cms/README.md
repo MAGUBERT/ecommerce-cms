@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+<h1 align="center"> E-commerce CMS </h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Sobre
 
-Currently, two official plugins are available:
+O E-commerce CMS é um sistema administrativo desenvolvido em sala de aula da disciplina de Programação, do Centro Universitário Mater Dei - UNIMATER, para gerenciar dados essenciais de uma loja virtual. A aplicação permite o cadastro e manutenção de Categorias, Marcas e Produtos, além de visualizar Clientes e acompanhar Pedidos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🖥️ Telas
 
-## React Compiler
+### Categorias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+#### Listagem
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/f68685d2-a588-4aa6-bee5-2520242b773b" />
 
-## Expanding the ESLint configuration
+#### Cadastro/Edição
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/fe0f78cb-4ab1-46eb-a617-432107376a1b" />
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Marcas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+#### Listagem
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/3b02eef5-a0e1-4ad6-a9a6-9e0d3d643cb6" />
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+#### Cadastro/Edição
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/63b6d1e9-b13e-44be-9514-eb83956a3375" />
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Produtos
+
+#### Listagem
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/d5d34894-198d-4b52-b44e-8e6f825284f7" />
+
+#### Cadastro/Edição
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/46d56e78-cf9f-4696-b085-8dfd3da6cd07" />
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/cd2f9bb7-c374-496e-90b7-0896adbfccbe" />
+
+### Clientes
+
+#### Listagem
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/c5b94ffd-a15b-4621-b9ca-9271b6fb968c" />
+
+#### Edição
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/00ef0f87-94e1-470e-8c51-5fb407c61774" />
+
+### Pedidos
+
+#### Listagem
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/ed15d3c9-4049-4b44-9945-f67714f83b0c" />
+
+#### Visualização
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/e5925cbd-0199-4b6d-b502-b5a7118634c0" />
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/83aa3fe1-5dbf-4641-9d93-78c5e6b872e6" />
+<img width="1920" height="945" alt="image" src="https://github.com/user-attachments/assets/637fc44b-30a9-414a-a278-961e6c6e5f2d" />
+
+
+## ⚙️ Variáveis de Ambiente
+
+Para rodar o projeto, é necessário configurar a url no arquivo ```.env```:
+```env
+VITE_API_URL=
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🗄️ Relacionamento com o Backend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+O CMS consome a API REST do projeto [E-commerce Backend](https://github.com/JoaoCriminacio/ecommerce-backend), utilizando requisições HTTP para:
+- Listar, criar, editar e excluir entidades
+- Carregar produtos, categorias e marcas dinamicamente
+- Exibir pedidos em tempo real
+- Carregar dados de clientes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠 Tecnologias
+
+<div align="center">
+  <table>
+    <tr>
+      <th>Vite</th>
+      <th>HTML</th>
+      <th>CSS</th>
+      <th>Tailwind</th>
+      <th>TypeScript</th>
+  	  <th>React</th>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=vite" alt="Vite"></a></td>
+      <td align="center"><a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=html" alt="HTML"></a></td>
+      <td align="center"><a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=css" alt="CSS"></a></td>
+      <td align="center"><a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind"></a></td>
+      <td align="center"><a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=typescript" alt="TypeScript"></a></td>
+  	  <td align="center"><a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=react" alt="React"></a></td>
+    </tr>
+  </table>
+</div>
