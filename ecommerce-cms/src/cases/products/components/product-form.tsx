@@ -15,11 +15,14 @@ import { useCategories } from "@/cases/categories/hooks/use-category";
 import { useBrands } from "@/cases/brands/hooks/use-brand";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
+import { ImageUpload } from "@/components/ui/image-upload";
 
 const formSchema = z.object({
   name: z.string().min(2, "Informe pelo menos 2 caracteres").max(100, "Máx. 100 caracteres"),
   description: z.string().optional(),
   price: z.coerce.number(),
+  image: z.string().optional(),
+  stock: z.coerce.number().optional(),
   active: z.boolean(),
   categoryId: z.string().min(1, "Selecione uma categoria"),
   brandId: z.string().optional(),
@@ -45,6 +48,8 @@ export function ProductForm() {
       name: "",
       description: "",
       price: 0,
+      image: "",
+      stock: 0,
       active: true,
       categoryId: "",
       brandId: "",
@@ -57,6 +62,8 @@ export function ProductForm() {
         name: data.name ?? "",
         description: data.description ?? "",
         price: data.price ?? 0,
+        image: data.image ?? "",
+        stock: data.stock ?? 0,
         active: data.active ?? true,
         categoryId: data.category?.id ?? "",
         brandId: data.brand?.id ?? "",
@@ -82,6 +89,8 @@ export function ProductForm() {
       name: values.name,
       description: values.description,
       price: values.price,
+      image: values.image || undefined,
+      stock: values.stock || 0,
       active: values.active,
       category: { id: values.categoryId, name: "" },
       brand: values.brandId ? { id: values.brandId, name: "" } : undefined,
@@ -197,6 +206,35 @@ export function ProductForm() {
                     <FormLabel>Preço</FormLabel>
                     <FormControl>
                       <Input type="number" step="0.01" placeholder="0.00" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="stock"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Estoque</FormLabel>
+                    <FormControl>
+                      <Input type="number" placeholder="0" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="image"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Imagem do Produto</FormLabel>
+                    <FormControl>
+                      <ImageUpload 
+                        value={field.value} 
+                        onChange={field.onChange}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
