@@ -90,25 +90,31 @@ export function ImageUpload({ value, onChange, bucket = "products" }: ImageUploa
           </Button>
         </div>
       ) : (
-        <div className="flex items-center gap-3">
-          <Input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            disabled={uploading}
-            className="flex-1"
-          />
-          {uploading && (
-            <Loader2 className="w-5 h-5 animate-spin text-gray-500" />
-          )}
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <label
+              htmlFor="image-upload"
+              className="flex-1 cursor-pointer inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+            >
+              <Upload className="w-4 h-4" />
+              {uploading ? "Enviando..." : "Escolher arquivo"}
+            </label>
+            <Input
+              id="image-upload"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              disabled={uploading}
+              className="hidden"
+            />
+            {uploading && (
+              <Loader2 className="w-5 h-5 animate-spin text-gray-500" />
+            )}
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Formatos aceitos: JPG, PNG, GIF, WEBP (máx. 5MB)
+          </p>
         </div>
-      )}
-
-      {!preview && (
-        <p className="text-xs text-gray-500">
-          <Upload className="w-3 h-3 inline mr-1" />
-          Formatos aceitos: JPG, PNG, GIF, WEBP (máx. 5MB)
-        </p>
       )}
     </div>
   );

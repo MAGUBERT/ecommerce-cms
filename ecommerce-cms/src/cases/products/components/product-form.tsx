@@ -133,6 +133,22 @@ export function ProductForm() {
             <TabsContent value="geral" className="space-y-5">
               <FormField
                 control={form.control}
+                name="image"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Imagem do Produto</FormLabel>
+                    <FormControl>
+                      <ImageUpload 
+                        value={field.value} 
+                        onChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
@@ -219,22 +235,6 @@ export function ProductForm() {
                     <FormLabel>Estoque</FormLabel>
                     <FormControl>
                       <Input type="number" placeholder="0" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="image"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Imagem do Produto</FormLabel>
-                    <FormControl>
-                      <ImageUpload 
-                        value={field.value} 
-                        onChange={field.onChange}
-                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
